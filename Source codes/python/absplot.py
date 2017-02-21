@@ -12,7 +12,7 @@ try:
     matplotlib.use('Agg')
 except ImportError:
     print >> sys.stderr, \
-    'Module "matplotlib" not available.'
+        'Module "matplotlib" not available.'
     exit(-1)
 
 import util.args
@@ -38,36 +38,36 @@ if __name__ == '__main__':
             'The labeli prefixes are the name used to describe that method '
             'in the resulting plot. e.g., "Crux 1":crux-60cm-ident.txt.')
 
-    parser = optparse.OptionParser(usage = usage, description = desc)
+    parser = optparse.OptionParser(usage=usage, description=desc)
 
     help_output = 'Name of the file where the plot is stored.'
-    parser.add_option('--output', type = 'string', help = help_output,
-                      default = None)
+    parser.add_option('--output', type='string', help=help_output,
+                      default=None)
 
     help_q = 'Maximum q-value to plot to: 0 < q <= 1.0'
-    parser.add_option('--maxq', type = 'float', default = 1.0, help = help_q)
-    parser.add_option('--q', type = 'float', default = -10)
+    parser.add_option('--maxq', type='float', default=1.0, help=help_q)
+    parser.add_option('--q', type='float', default=-10)
 
     help_publish = 'Generate plot for b/w publication.'
-    parser.add_option('--publish', action = 'store_true', default = False,
-                      help = help_publish)
+    parser.add_option('--publish', action='store_true', default=False,
+                      help=help_publish)
     (options, args) = parser.parse_args()
 
     assert len(args) >= 1, 'No identification files listed.'
 
-    labels = [ ]
-    scorelists = [ ]
+    labels = []
+    scorelists = []
     sids = None
 
     if options.q < 0.0 and not options.output:
         print >> sys.stderr, 'You need to define one of --q, --output'
         exit(-2)
 
-    def process(arg, sids = None, silent = False):
+    def process(arg, sids=None, silent=False):
         desc, fn = util.args.parse_positional_pair(arg)
         labels.append(desc)
         targets, decoys = visualize.parsers.load_ident(fn, sids)
-        scorelists.append( (targets, decoys) )
+        scorelists.append((targets, decoys))
         if not silent:
             print 'Loaded %d spectrum identifications from %s' % (
                 len(targets), fn)
@@ -81,9 +81,9 @@ if __name__ == '__main__':
 
     if options.output:
         qrange = (0.0, options.maxq)
-        visualize.absolute.plot(scorelists, options.output, qrange = qrange,
-                                labels = labels, paranoid = True,
-                                publish = options.publish)
+        visualize.absolute.plot(scorelists, options.output, qrange=qrange,
+                                labels=labels, paranoid=True,
+                                publish=options.publish)
 
     print "hi"
 
@@ -91,6 +91,7 @@ if __name__ == '__main__':
         if options.q < 0.0 or options.q > 1.0:
             print >> sys.stderr, '--q <float> must be a q-value in [0,1]'
             exit(-2)
-        num_accepted = visualize.absolute.identifications(scorelists, options.q)
+        num_accepted = visualize.absolute.identifications(
+            scorelists, options.q)
         for lbl, n in zip(labels, num_accepted):
             print '%s accepted %d spectra at q = %.3g' % (lbl, n, options.q)
