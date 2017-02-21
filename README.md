@@ -1,10 +1,9 @@
 
 
-<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <HTML>
    <HEAD>
       <TITLE>
-        Mass Spec with Deep Neural Networks
+       SGM
       </TITLE>
     <!-- Bootstrap Core CSS -->
 	<link rel="stylesheet" href="assets/css/bootstrap.css" rel="stylesheet">
