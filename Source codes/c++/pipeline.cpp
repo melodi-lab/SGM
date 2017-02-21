@@ -93,11 +93,11 @@ void charged_ion_factor(float *factor, int charge, int length_peptide, int lengt
 // ---------------- Main function -------------------- //
 
 //float calculate_abs_ranking_ch2(vector<float> weight_b, vector<float> weight_y, vector<float>other_p, int k2_input, int kind, int index, int charge, vector<string>filenames, int n0, int nn0, vector<float> lambda_vector)
-float calculate_abs_ranking_ch2(input_para paras){
+float calculate_abs_ranking_ch2(input_para paras) {
 
 	std::vector<float> lambda_vector = paras.lambda_vector;
 	int charge = paras.charge;
-	float l_s_factor=1.1;
+	float l_s_factor = 1.1;
 
 	vector<std::string> high_confidence(15000, "AAA");
 
@@ -118,10 +118,10 @@ float calculate_abs_ranking_ch2(input_para paras){
 			high_confidence[x] = y;
 		}
 	}
-	
 
-	bool TMT_label = 1;	
-	
+
+	bool TMT_label = 1;
+
 	int start = 1;
 	int ii = start - 1;
 	bool add_ch3 = 1;
@@ -161,13 +161,13 @@ float calculate_abs_ranking_ch2(input_para paras){
 
 	int nn = paras.nn;
 
-	
+
 //if (n>1000) n=1000;
 
 	cout << n << " " << nn << endl;
 
 
-	
+
 
 
 	string line;
@@ -327,8 +327,8 @@ float calculate_abs_ranking_ch2(input_para paras){
 	ofstream scores_file2;
 	ofstream all_scores_file;//contains all scores of target and decoy PSMs
 	ofstream all_scores_file_other_decoy;//contains all scores of larger decoy set PSMs for calibration propose.
-	ifstream infile;	
-	
+	ifstream infile;
+
 	int currentfile = 0;
 	infile.open(paras.input_file.c_str());
 	scores_file2.open(paras.output_file.c_str());
@@ -527,7 +527,7 @@ float calculate_abs_ranking_ch2(input_para paras){
 
 			std::sort (b_ion.begin(), b_ion.end());
 			std::sort(y_ion.begin(), y_ion.end(), std::greater<int>());
-		
+
 
 			vector<int>A1;
 			vector<int>A2;
@@ -543,9 +543,9 @@ float calculate_abs_ranking_ch2(input_para paras){
 			vector<int>type;
 			B1.assign(2100, 0);
 			B2.assign((int)(2 * (b_ion.size() + y_ion.size()) + 1000), 0);
-			int nb=b_ion.size();
-	
-			float flanking_factor1=1.0;
+			int nb = b_ion.size();
+
+			float flanking_factor1 = 1.0;
 
 			for (int kk = 0; kk < b_ion.size(); kk++) {
 
@@ -554,8 +554,8 @@ float calculate_abs_ranking_ch2(input_para paras){
 				//float ion_length_factor=4.5-4.0*pow(2.0*((temp1+1-temp2/2.0)/temp2),2);
 				float ion_length_factor = 0.9 + 0.2 * temp1 / temp2;
 				ion_length_factor = 1.0;
-				float mze=b_ion.at(kk);
-				if(mze>=first.intensity_obs.size()) continue;
+				float mze = b_ion.at(kk);
+				if (mze >= first.intensity_obs.size()) continue;
 
 
 				int length_ion = kk + 1;
@@ -659,7 +659,7 @@ float calculate_abs_ranking_ch2(input_para paras){
 				//end
 
 				float mze = y_ion.at(kk);
-		
+
 //iso[1]=n_NH3_loss*factor_Nh3*iso[1];
 //iso[0]=n_H2O_loss*factor_Nh3*iso[0];
 //if(n_NH3_loss==0) iso[1]=0;
@@ -791,7 +791,7 @@ float calculate_abs_ranking_ch2(input_para paras){
 			//	all_graph.write_all_parameters(output[ii].sid);
 //all_graph.GreedyMax_initialByOne(output[ii].sid);
 			//}
-			
+
 
 
 			i++;
@@ -839,7 +839,7 @@ float calculate_abs_ranking_ch2(input_para paras){
 	while (ii < n)
 	{
 
-		
+
 		int j = 0;
 //****************2014-10-26*****************************//
 
