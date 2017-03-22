@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata
+END
+bad_id.psm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/bad_id.psm
+END
+dup_peptide.psm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/dup_peptide.psm
+END
+spectra.ms2
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/spectra.ms2
+END
+spectrum.ms2
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/spectrum.ms2
+END
+multiz.ms2
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/multiz.ms2
+END
+compressed_spectrum.ms2.gz
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/compressed_spectrum.ms2.gz
+END
+debug.ms2
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/debug.ms2
+END
+spectra.pickle.gz
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/spectra.pickle.gz
+END
+dup_spectra.psm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/dup_spectra.psm
+END
+test.psm
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnrepo/!svn/ver/11741/wenruo/codes/msutil/testdata/test.psm
+END
