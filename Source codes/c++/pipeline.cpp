@@ -7,7 +7,6 @@
 #include <functional>
 #include <algorithm>
 #include <cmath>
-#include "../graphs/graph_generator.h"
 #include <unistd.h>
 #include <cstdlib>
 //#include "../fast_code/max_weight_bipartite_match_fast.h"
@@ -159,12 +158,13 @@ float calculate_abs_ranking_ch2(input_para paras) {
 
 	int n = paras.n; // Corresponds to the Peptide with a differing score from xcorr
 
+	n =500;
 	int nn = paras.nn;
 
 
 //if (n>1000) n=1000;
 
-	cout << n << " " << nn << endl;
+	cout << "number of spectrum:"<< n << " " << nn << endl;
 
 
 
@@ -331,22 +331,24 @@ float calculate_abs_ranking_ch2(input_para paras) {
 
 	int currentfile = 0;
 	infile.open(paras.input_file.c_str());
+	cout<<"inputfile: "<<paras.input_file.c_str();
 	scores_file2.open(paras.output_file.c_str());
 	int temp_int; float temp_float;
 	while (ii < n)
 	{
 
-		if (ii % 100 == 0) {
-			char hostname[1024];
-			hostname[1023] = '\n';
-			gethostname(hostname, 1023);
+			cout<<"spectrum: "<<ii<<endl;
+	//	if (ii % 100 == 0) {
+//char hostname[1024];
+//			hostname[1023] = '\n';
+//			gethostname(hostname, 1023);
 			//cout << hostname << "***" << filenames[1].c_str() << " " << filenames[4].c_str() << " " << " ii=" << ii << " ";
-			for (int kkk = 0; kkk < lambda_vector.size(); kkk++) {
-				cout << lambda_vector[kkk] << " ";
-			}
-			cout << endl;
+//			for (int kkk = 0; kkk < lambda_vector.size(); kkk++) {
+//				cout << lambda_vector[kkk] << " ";
+//			}
+//			cout << endl;
 // ------------------ READ OBSERVED SPECTRUM DATA ---------------------- //
-		}
+	//	}
 
 		spectrum_obs first;
 		infile >> output[ii].sid;
@@ -403,7 +405,6 @@ float calculate_abs_ranking_ch2(input_para paras) {
 // Define array of structs
 
 		spectrum_theo peptides[num_peptides]; // Define an array of theoretical spectrum structs
-		bipartite_graph bipartite[num_peptides]; // Define an array of bipartite graphs
 //output[ii].peptide_name_ptr = new string[num_peptides]; // Dynamic allocation of memory for storing strings
 //output[ii].scores = new float[num_peptides];
 
@@ -414,7 +415,6 @@ float calculate_abs_ranking_ch2(input_para paras) {
 		(output[ii].parameter).reserve(num_peptides * 2);
 		(output[ii].parameter).assign(num_peptides, 0);
 		(output[ii].edges) = new vector<float>[num_peptides];
-
 
 
 //while (i < num_peptides)
@@ -836,6 +836,8 @@ float calculate_abs_ranking_ch2(input_para paras) {
 	para_file3.open("output/para2.txt");
 	ii = 0;
 //cout<<"ii = "<<ii<<endl;
+//
+scores_file2<<"Kind\tSid\tPeptide\tScore\n";
 	while (ii < n)
 	{
 

@@ -13,7 +13,6 @@
 #include <functional>
 #include <algorithm>
 #include <cmath>
-#include "../graphs/graph_generator.h"
 
 #include <cstdlib>
 //#include "../fast_code/max_weight_bipartite_match_fast.h"
@@ -310,19 +309,6 @@ float sub_sup::submodualar_function2_with_modular(vector<int>matching, int modul
 }
 float sub_sup::submodualr_function1(vector<int>matching, float projection_t) {
 //define submodular1
-	if (test == 1) {
-		float s = 0;
-		for (int i = 0; i < test_t; i++) {
-			float s1 = 0;
-
-			for (int j = 0; j < matching.size(); j++) {
-				int k = matching[j];
-				s1 += test_weight1[i][k];
-			}
-			s += pow(s1, test_pow1[i] / projection_t);
-		}
-		return s;
-	}
 	float s1 = 0;
 	float pow1 = 2.0;
 	vector<float> s_a1;
@@ -413,6 +399,7 @@ float sub_sup::submodualr_function(vector<int>matching, int modular, float proje
 	//return lambda*submodualr_function1(matching,projection_t)+(1-lambda)*submodualr_function2(matching,projection_t);
 	float f1 = submodualr_function1(matching, projection_t);
 	float f2 = submodualr_function2(matching, projection_t);
+	return f1;
 //	return f2;
 //	return f1;
 //	if (lambda_2 < 0.0001) return f2;

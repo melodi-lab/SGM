@@ -44,6 +44,8 @@ int main(int argc, char *argv[]) {
   char* input = "";
   char* output = "";
   char* ms2file = "";
+  char* n_s ="";
+  char* nn_s = "";
   int set_id = 0;
   while ((tmp = getopt(argc, argv, "hc:i:o:m:n:N:p:")) != -1)
   {
@@ -72,8 +74,19 @@ int main(int argc, char *argv[]) {
 
     case 'm':
       cout << "ms2 file: " << optarg << endl;
-      output = optarg;
+      ms2file = optarg;
       break;
+
+	case 'n':
+      cout << "number of spectral: " << optarg << endl;
+      nn_s = optarg;
+      break;
+
+	case 'N':
+      cout << "number of spectral with at least one target spectrum: " << optarg << endl;
+      n_s = optarg;
+      break;
+
 
     default:
       showhelpinfo(argv[0]);
@@ -83,10 +96,14 @@ int main(int argc, char *argv[]) {
   string str1(input);
   paras.input_file = str1;
   string str2(output);
-  paras.input_file = str2;
+  paras.output_file = str2;
   string str3(ms2file);
   paras.input_ms2_file = str3;
   ////////////////
+  paras.n = atoi(n_s);
+  paras.nn = atoi(nn_s);
+ 	cout<<paras.n<<endl;
+ 	cout<<paras.nn<<endl;
 
   paras.lambda_vector.assign(8, 0);
   //lambda_vector[0]=random_float(0.0,1.0);
