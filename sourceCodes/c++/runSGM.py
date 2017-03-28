@@ -6,9 +6,6 @@ from multiprocessing import cpu_count
 import shutil
 
 inputFolder = "../data/ms2file"
-outputFolder = "../data/encode"
-target = "../data/tide-output/tide-index.peptides.target.txt"
-decoy = "../data/tide-output/tide-index.peptides.decoy.txt"
 
 inputfiles = []
 inputfilenames = []
@@ -20,11 +17,6 @@ for file in os.listdir(inputFolder):
 #inputfiles.sort()
 #inputfilenames.sort()
 
-
-if os.path.exists(outputFolder):
-    shutil.rmtree(outputFolder)
-else:
-    os.makedirs(outputFolder)
 
 commands = []
 def getCharge(filename):
@@ -39,7 +31,7 @@ def getCharge(filename):
 for f, g in zip(inputfiles, inputfilenames):
     #
     index, charge = getCharge(g)
-    command = "./bipartite_write.sh %s %s %s %s %s"%(index, charge, f, target, decoy)
+    command = "./runSGM.sh %s %s"%(index, charge)
     commands.append(command)
     #sys.stderr.write("%s\n"%command)
     #subprocess.call(command, shell=True)
