@@ -4,31 +4,46 @@ import subprocess
 from multiprocessing import Pool
 from multiprocessing import cpu_count
 
-inputFolder = "../../../ms2data/malaria"
-outputFolder = "../data/ms2file"
+inputFolder = "../data/ms2file"
+outputFolder = "../data/encode"
+target = "../data/tide-output/tide-index.peptides.target.txt"
+decoy = "../data/tide-output/tide-index.decoy.target.txt"
 
 inputfiles = []
+inputfilenames = []
 for file in os.listdir(inputFolder):
     if file.endswith(".ms2"):
+        #num_lines = sum(1 for line in open('myfile.txt'))
         inputfiles.append("%s/%s" % (inputFolder, file))
-inputfiles.sort()
+        inputfilenames.append(file)
+#inputfiles.sort()
+#inputfilenames.sort()
 
 
 if not os.path.exists(outputFolder):
     os.makedirs(outputFolder)
+
 commands = []
-index = 1    
-for f in inputfiles:
-    for charge in [2,3,4,5,6,7]:
-        outputfile = "%s/%d-ch%d.ms2" % (outputFolder, index, charge)
-        if os.path.exists(outputfile):
-            os.remove(outputfile)
-        command = "python filter_spectra.py -z -i %s -c %d > %s" % (f, charge, outputfile)
-        commands.append(command)
-        #sys.stderr.write("%s\n"%command)
-        #subprocess.call(command, shell=True)
-    index += 1
+def getCharge(filename):
+    a = '\t'.join(filename.split('.ms2'))
+    a = '\t'.join(a.split('-ch'))
+    a = a.strip()
+    b = a.split('\t')
+
+    return b[0], b[1]
+
+
+for f, g in zip(inputfiles, inputfilenames):
+    #
+    #commands.append(command)
+    index, charge = getCharge(g)
+    command = "./bipartite_write.sh %s %s %s %s %s"%(index, charge, f, target, decoy)
+    print command
+    #sys.stderr.write("%s\n"%command)
+    #subprocess.call(command, shell=True)
+
 def runCommand(command):
+    sys.stderr.write("%s\n"%command)
     subprocess.call(command, shell=True)
 
 pool = Pool()  
