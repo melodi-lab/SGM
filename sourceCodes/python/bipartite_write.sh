@@ -10,7 +10,8 @@ NORMALIZE=fastSequestTransform
 # NORMALIZE=sequestProcess
 MASS=2000
 CHARGE=$2
-ENCODE="$ORG-ch$CHARGE"
+OUTPUTFOLDER="../data/encode"
+ENCODE="$OUTPUTFOLDER/$ORG-ch$CHARGE"
 
 if [ ! -d $ENCODE ]
 then
