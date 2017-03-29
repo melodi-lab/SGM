@@ -24,4 +24,7 @@ n=$((($n-1)/2))
 echo $nn
 echo $n
 
-./OUT_SGM_sup.out -i $msmsfile -m $ms2file -o ../data/result/$1-ch$2.txt -c $2 -n $n -N $nn
+
+
+
+./OUT_SGM_sup.out -i $msmsfile -m $ms2file -o $3/$1-ch$2.txt -c $2 -n $n -N $nn

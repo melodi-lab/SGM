@@ -204,72 +204,6 @@ def merge_mutilple_file(allfilenames,outputfile,fix_r=0):
 		merge_indent(i,outputfile,outputfile,fix_r)		
 
 
-#ch2file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-ch2.txt.sumScoreIdent"
-#ch3file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-ch3.txt.sumScoreIdent"
-#ch4file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-ch4.txt.sumScoreIdent"
-#ch5file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-ch5.txt.sumScoreIdent"
-#ch6file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-ch6.txt.sumScoreIdent"
-#ch7file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-ch7.txt.sumScoreIdent"
-#ch2345file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-ch2345.txt.sumScoreIdent"
-#merge_indent(ch2file,ch3file,ch2345file)		
-#merge_indent(ch4file,ch2345file,ch2345file)		
-#merge_indent(ch5file,ch2345file,ch2345file)		
-
-#
-#
-#ch2file="/s1/wrbai/codes/msgfplus/malaria_TMT13/malaria-ch2/malaria-ch2-ident.txt"
-#ch3file="/s1/wrbai/codes/msgfplus/malaria_TMT13/malaria-ch3/malaria-ch3-ident.txt"
-#ch4file="/s1/wrbai/codes/msgfplus/malaria_TMT13/malaria-ch4/malaria-ch4-ident.txt"
-#ch5file="/s1/wrbai/codes/msgfplus/malaria_TMT13/malaria-ch5/malaria-ch5-ident.txt"
-#ch2345file="/s1/wrbai/codes/msgfplus/malaria_TMT13/malaria-ch2345-ident.txt"
-#ch3file="/s1/wrbai/codes/msgfplus/malaria_jeffH/malaria-ch3/malaria-ch3-ident.txt"
-#ch4file="/s1/wrbai/codes/msgfplus/malaria_jeffH/malaria-ch4/malaria-ch4-ident.txt"
-#ch5file="/s1/wrbai/codes/msgfplus/malaria_jeffH/malaria-ch5/malaria-ch5-ident.txt"
-#ch2345file="/s1/wrbai/codes/msgfplus/malaria_jeffH/malaria-ch2345-ident.txt"
-#
-#ch2file="/s1/wrbai/codes/msgfplus/linfeng_010211-2/linfeng-ch2/linfeng-ch2-ident.txt"
-#ch3file="/s1/wrbai/codes/msgfplus/linfeng_010211-2/linfeng-ch2/linfeng-ch2-ident.txt"
-#ch4file="/s1/wrbai/codes/msgfplus/linfeng_010211-2/linfeng-ch2/linfeng-ch2-ident.txt"
-#ch5file="/s1/wrbai/codes/msgfplus/linfeng_010211-2/linfeng-ch2/linfeng-ch2-ident.txt"
-#ch2345file="/s1/wrbai/codes/msgfplus/linfeng_010211-2/linfeng-ch2345-ident.txt"
-#
-#merge_indent(ch2file,ch3file,ch2345file)		
-#merge_indent(ch4file,ch2345file,ch2345file)		
-#merge_indent(ch5file,ch2345file,ch2345file)		
-#merge_indent(ch6file,ch2345file,ch2345file)		
-#merge_indent(ch7file,ch2345file,ch2345file)		
-
-#ch2file="/s1/wrbai/codes/output/calibration/test_scores_output_fast_malaria-ch2.txt.sumScoreIdent"
-#ch3file="/s1/wrbai/codes/output/calibration/test_scores_output_fast_malaria-ch3.txt.sumScoreIdent"
-#ch4file="/s1/wrbai/codes/output/calibration/test_scores_output_fast_malaria-ch4.txt.sumScoreIdent"
-#ch5file="/s1/wrbai/codes/output/calibration/test_scores_output_fast_malaria-ch5.txt.sumScoreIdent"
-#
-#
-#ch2345file="/s1/wrbai/codes/output/calibration/test_scores_output_fast_malaria-ch2345.txt.sumScoreIdent"
-#merge_indent(ch2file,ch3file,ch2345file)		
-#merge_indent(ch4file,ch2345file,ch2345file)		
-#merge_indent(ch5file,ch2345file,ch2345file)		
-#
-#dir="/n/trombone"
-#ch2file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_linfeng_010211_ch2_test.txt.sumScoreIdent"
-#ch3file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_linfeng_010211_ch3_test.txt.sumScoreIdent"
-#ch4file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_linfeng_010211_ch4_test.txt.sumScoreIdent"
-#ch5file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_linfeng_010211_ch5_test.txt.sumScoreIdent"
-#ch2345file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_linfeng_010211_ch2345_test.txt.sumScoreIdent"
-##
-##
-#merge_indent(ch2file,ch3file,ch2345file)		
-#merge_indent(ch4file,ch2345file,ch2345file)		
-#for i in range(143,200):
-#	id=i+1
-#
-#	dir="/n/trombone"
-#	ch2file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_Linfeng-%d_ch2_test.txt.sumScoreIdent"%(id)
-#	ch3file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_Linfeng-%d_ch3_test.txt.sumScoreIdent"%(id)
-#	ch4file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_Linfeng-%d_ch4_test.txt.sumScoreIdent"%(id)
-#	ch2345file="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_Linfeng-%d-ch2345_test.txt.sumScoreIdent"%(id)
-#	merge_indent(ch2file,ch3file,ch2345file)		
-#	merge_indent(ch4file,ch2345file,ch2345file)		
 #
 for i in range(20):
 
@@ -278,62 +212,6 @@ for i in range(20):
 	dir="/n/trombone"
 	for j in range(4):
 		c=j+2
-		#filenames.append("/n/trombone/s1/wrbai/codes/msgfplus/linfeng_9_%d-1/linfeng-ch%d/linfeng.txt"%(id,c))
-#		filenames.append("/n/trombone/s1/wrbai/codes/msgfplus/kim-%d/kim-ch%d/kim.txt"%(id,c))
-	#	filenames.append("/n/trombone/s1/wrbai/codes/msgfplus/linfeng-%d/linfeng-ch%d/linfeng.txt"%(id,c))
-	#	if id==17 and c==5:
-	#		continue;
-	#	if id==9 and c==5:
-	#		continue
-		#filenames.append("/n/trombone/s1/wrbai/codes/output/kim-random20-%d-0-ch%d.txt"%(id,c))
-#		filenames.append("/n/trombone/s1/wrbai/codes/output/postbcb-mean/plasm-%d-ch%d-lambda1-7-lambda2-15.txt"%(id,c))
-		filenames.append("/n/trombone/s1/wrbai/codes/output/postbcb/2016_6_29/Linfeng1/plasm-%d-ch%d-lambda1-7-lambda2-15.txt"%(id,c))
-	#	filenames.append("/n/trombone/s1/wrbai/codes/msgfplus/plasm-%d/plasm-ch%d/plasm.txt"%(id,c))
-
-#	outputfile="/n/trombone/s1/wrbai/codes/msgfplus/linfeng_9_%d-1/linfeng.txt"%(id)
-	#outputfile="/n/trombone/s1/wrbai/codes/output/postbcb-mean/plasm-%d-lambda1-7-lambda2-15.txt"%(id)
+		filenames.append(""%(id,c))
 	outputfile="/n/trombone/s1/wrbai/codes/output/postbcb/2016_6_29/Linfeng1/Linfeng-%d-lambda1-7-lambda2-15.txt"%(id)
-#	outputfile="/n/trombone/s1/wrbai/codes/msgfplus/plasm-%d/plasm.txt"%(id)
-#	outputfile="/n/trombone/s1/wrbai/codes/msgfplus/kim-%d/kim.txt"%(id)
-#	outputfile="/n/trombone/s1/wrbai/codes/msgfplus/linfeng-3/linfeng.txt"
 	merge_mutilple_file(filenames,outputfile,0)
-##
-##
-#merge_indent(ch4file,ch2345file,ch2345file)		
-#
-#m
-#merge_indent(ch5file,ch2345file,ch2345file)		
-#
-##
-#
-#
-##ch2file="/s1/wrbai/codes/output/test_scores_output_fast_linfeng_112710_ch2_test.txt.sumScoreIdent"
-##ch3file="/s1/wrbai/codes/output/test_scores_output_fast_linfeng_112710_ch3_test.txt.sumScoreIdent"
-##ch4file="/s1/wrbai/codes/output/test_scores_output_fast_linfeng_112710_ch4_test.txt.sumScoreIdent"
-##ch5file="/s1/wrbai/codes/output/test_scores_output_fast_linfeng_112710_ch5_test.txt.sumScoreIdent"
-##ch2345file="/s1/wrbai/codes/output/test_scores_output_fast_linfeng_112710_ch2345_test.txt.sumScoreIdent"
-##
-##
-##merge_indent(ch2file,ch3file,ch2345file)		
-##merge_indent(ch4file,ch2345file,ch2345file)		
-##merge_indent(ch5file,ch2345file,ch2345file)		
-##
-#
-
-#ch2file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-TMT11_ch3_test.txt.sumScoreIdent"
-#ch3file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-TMT11_ch3_test.txt.sumScoreIdent"
-#ch4file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-TMT11_ch4_test.txt.sumScoreIdent"
-#ch5file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-TMT11_ch5_test.txt.sumScoreIdent"
-#ch2345file="/s1/wrbai/codes/output/test_scores_output_fast_malaria-TMT11_ch2345_test.txt.sumScoreIdent"
-#
-#
-#merge_indent(ch2file,ch3file,ch2345file)		
-#merge_indent(ch4file,ch2345file,ch2345file)		
-#merge_indent(ch5file,ch2345file,ch2345file)		
-#
-
-
-
-
-
-

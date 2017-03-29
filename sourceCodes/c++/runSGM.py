@@ -7,6 +7,13 @@ import shutil
 
 inputFolder = "../data/ms2file"
 
+outputFolder = "../data/result"
+
+if os.path.exists(outputFolder):
+    shutil.rmtree(outputFolder)
+os.makedirs(outputFolder)
+
+
 inputfiles = []
 inputfilenames = []
 for file in os.listdir(inputFolder):
@@ -31,7 +38,7 @@ def getCharge(filename):
 for f, g in zip(inputfiles, inputfilenames):
     #
     index, charge = getCharge(g)
-    command = "./runSGM.sh %s %s"%(index, charge)
+    command = "./runSGM.sh %s %s %s"%(index, charge, outputFolder)
     commands.append(command)
     #sys.stderr.write("%s\n"%command)
     #subprocess.call(command, shell=True)
