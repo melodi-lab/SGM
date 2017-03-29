@@ -100,12 +100,12 @@ float calculate_abs_ranking_ch2(input_para paras) {
 
 	vector<std::string> high_confidence(15000, "AAA");
 
-	ofstream outs;
-	outs.open("/s1/wrbai/codes/output/outs.txt", ios::trunc);
-	if (true) {
+//	ofstream outs;
+//	outs.open("/s1/wrbai/codes/output/outs.txt", ios::trunc);
+	if (false) {
 		ifstream high_confidence_file;
 //	high_confidence_file.open("/n/trombone/s1/wrbai/codes/matlab_codes/2016_11_1/plasm-10-ch3-high.txt");
-		high_confidence_file.open("/n/trombone/s1/wrbai/codes/matlab_codes/2016_11_1/plasm-10-ch3-high1.txt");
+		high_confidence_file.open("plasm-10-ch3-high1.txt");
 //	high_confidence_file.open("/n/trombone/s1/wrbai/codes/matlab_codes/2016_11_1/plasm-10-ch3-high.txt");
 		while (true) {
 			int x;
@@ -133,7 +133,7 @@ float calculate_abs_ranking_ch2(input_para paras) {
 	vector<float> weight_high_y_ion;
 	weight_high_y_ion.assign(3001 + 3000, 0);
 	ifstream weight_b_file;
-	weight_b_file.open("/n/trombone/s1/wrbai/codes/pipeline/bion_weight_malaria.txt");
+	weight_b_file.open("bion_weight_malaria.txt");
 	for (int kk = 0; kk < weight_high_b_ion.size(); kk++) {
 		float temp = 0;
 
@@ -145,7 +145,7 @@ float calculate_abs_ranking_ch2(input_para paras) {
 
 	weight_b_file.close();
 	ifstream weight_y_file;
-	weight_y_file.open("/n/trombone/s1/wrbai/codes/pipeline/yion_weight_malaria.txt");
+	weight_y_file.open("yion_weight_malaria.txt");
 	for (int kk = 0; kk < weight_high_y_ion.size(); kk++) {
 		float temp = 0;
 
@@ -158,7 +158,6 @@ float calculate_abs_ranking_ch2(input_para paras) {
 
 	int n = paras.n; // Corresponds to the Peptide with a differing score from xcorr
 
-	n =500;
 	int nn = paras.nn;
 
 
@@ -331,7 +330,7 @@ float calculate_abs_ranking_ch2(input_para paras) {
 
 	int currentfile = 0;
 	infile.open(paras.input_file.c_str());
-	cout<<"inputfile: "<<paras.input_file.c_str();
+	cout<<"inputfile: "<<paras.input_file.c_str()<<endl;
 	scores_file2.open(paras.output_file.c_str());
 	int temp_int; float temp_float;
 	while (ii < n)
@@ -479,7 +478,6 @@ float calculate_abs_ranking_ch2(input_para paras) {
 		}
 
 
-
 		i = 0;
 		float local_max = 0;
 
@@ -528,7 +526,6 @@ float calculate_abs_ranking_ch2(input_para paras) {
 			std::sort (b_ion.begin(), b_ion.end());
 			std::sort(y_ion.begin(), y_ion.end(), std::greater<int>());
 
-
 			vector<int>A1;
 			vector<int>A2;
 			vector<float>obs_mz_A1;
@@ -546,7 +543,6 @@ float calculate_abs_ranking_ch2(input_para paras) {
 			int nb = b_ion.size();
 
 			float flanking_factor1 = 1.0;
-
 			for (int kk = 0; kk < b_ion.size(); kk++) {
 
 				float temp1 = kk;
@@ -597,6 +593,7 @@ float calculate_abs_ranking_ch2(input_para paras) {
 					for (int charge_ion = 2; charge_ion < charge; charge_ion++) {
 						float mz_charge_ion = mze;
 						mz_charge_ion = (mz_charge_ion + (float)charge_ion - 1) / ((float)charge_ion);
+//cout<<obs_mz_bin[ii_sid].size()<<endl;
 						for (int jj = 0; jj < obs_mz_bin[ii_sid].size(); jj++) {
 							if (abs(obs_mz_bin[ii_sid][jj] - mz_charge_ion) < 30.0) {
 								int diff = (int)((obs_mz_bin[ii_sid][jj] - mz_charge_ion) * 100) + 3000;
@@ -770,12 +767,12 @@ float calculate_abs_ranking_ch2(input_para paras) {
 //sub_sup all_graph(A1,A2,We,10,2,2000,2*b_ion.size()+2*y_ion.size(),other_p[3],other_p[6],other_p[7]);
 			sub_sup all_graph(A1, A2, We, obs_mz_A1, obs_mz_A2, obs_intensity_A1, 0, 10, 2, 2000, 2 * b_ion.size() + 2 * y_ion.size(), lambda_vector);
 
-			if (0) {
+//			if (0) {
 
-				cout << ii << " " << i << endl;
+				//cout << ii << " " << i << endl;
 
-				outs << all_graph.GreedyMax() << "\t" << all_graph.submodualr_projection(2.0) << "\t" << all_graph.sub_sup_process(1) << "\t" << all_graph.sub_sup_process(2) << "\t" << all_graph.sub_sup_process(3) << "\t" << all_graph.random_scores() << endl;
-			}
+				//outs << all_graph.GreedyMax() << "\t" << all_graph.submodualr_projection(2.0) << "\t" << all_graph.sub_sup_process(1) << "\t" << all_graph.sub_sup_process(2) << "\t" << all_graph.sub_sup_process(3) << "\t" << all_graph.random_scores() << endl;
+//			}
 
 
 

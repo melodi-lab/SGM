@@ -1067,7 +1067,7 @@ void sub_sup::write_all_bipartite(int sid) {
 	}
 
 	std::ofstream myfile;
-	myfile.open("/n/trombone/s1/wrbai/codes/matlab_codes/2016_12_30/matchings_one.txt", std::ios::app);
+	myfile.open("matchings_one.txt", std::ios::app);
 	//cout<<A1.size()<<" "<<A2.size()<<" "<<W.size()<<" "<<obs_mz_A1.size()<<" "<<obs_intensity_A1.size()<<" "<<obs_mz_A2.size()<<" "<<matching_order2.size()<<endl;
 	//
 	myfile << -n_A2 << "\t" << sid << "\t-1\t-1\t-1\t-1\t-1\n";
@@ -1092,7 +1092,7 @@ void sub_sup::write_all_parameters(int sid) {
 //   	int n_A20 = n_A2;
 	// vector<float>lambda_vector0(lambda_vector);
 	std::ofstream myfile;
-	myfile.open("/n/trombone/s1/wrbai/codes/matlab_codes/2016_12_30/input_for_subsup.txt", std::ios::app);
+	myfile.open("input_for_subsup.txt", std::ios::app);
 	myfile << "sid: " << sid << endl;
 
 	myfile << "static const int arr1[] = {";

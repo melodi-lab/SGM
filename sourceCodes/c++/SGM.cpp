@@ -77,12 +77,12 @@ int main(int argc, char *argv[]) {
       ms2file = optarg;
       break;
 
-	case 'n':
+	case 'N':
       cout << "number of spectral: " << optarg << endl;
       nn_s = optarg;
       break;
 
-	case 'N':
+	case 'n':
       cout << "number of spectral with at least one target spectrum: " << optarg << endl;
       n_s = optarg;
       break;
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
   //other_p[6]=lambda_vector[2];
   //other_p[7]=lambda_vector[3];
   ifstream fin_file;
-  fin_file.open("/n/trombone/s1/wrbai/codes/pipeline/parameter_sets.txt");
+  fin_file.open("parameter_sets.txt");
 
   cout << "set_id " << set_id << endl;
   float temp_int = 10;
