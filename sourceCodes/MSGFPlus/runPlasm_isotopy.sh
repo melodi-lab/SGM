@@ -55,7 +55,7 @@ c=$2
 		mkdir -p $outDir
 	    fi
 	
-		MS2="../data/plasm-$id-ch$c.mgf"
+		MS2="/home/ubuntu/SGM/sourceCodes/data/msgfdata/plasm/plasm-$id-ch$c.mgf"
 		echo $MS2
 	# start with targets
 	    OUTTARGETMZID="$outDir/plasm-ch$CHARGE-targets.mzid"

@@ -13,7 +13,7 @@ function runMsgf {
 	-s $1 \
 	-d $2 \
 	-o $3 \
-	-t 50ppm \
+	-t 10ppm \
 	-tda 0 \
 	-n 1 \
 	-minCharge $4 \
@@ -23,7 +23,7 @@ function runMsgf {
 	-e 1 \
 	-ti 0,0 \
 	-minLength 7 \
-	-mod tmtModFile.txt \
+	-mod mods.txt \
 	-thread 1 \
 	-ntt 2 \
 	-ignoreMetCleavage 1 
@@ -40,13 +40,13 @@ MSGFPlusDir=$PWD
 MSGFPlus="java -Xmx3500M -jar $MSGFPlusDir/MSGFPlus.jar"
 MzIDToTSV="java -cp $MSGFPlusDir/MSGFPlus.jar edu.ucsd.msjava.ui.MzIDToTsv"
 
-TARGETDB="database/PlasmoDB-10.0_Pfalciparum3D7_AnnotatedProteins-nokeil-target.fasta"
-DECOYDB="database/PlasmoDB-10.0_Pfalciparum3D7_AnnotatedProteins-nokeil-decoy.fasta"
+TARGETDB="database/ipi.HUMAN.v3.74-nokeil-target.fasta"
+DECOYDB="database/ipi.HUMAN.v3.74-nokeil-decoy.fasta"
 
 	id=$1
 c=$2	
 	    CHARGE=$c
-	    outDir="plasm-no-isotopy/plasm-$id/plasm-ch$CHARGE"
+	    outDir="human-no-isotopy/human-$id/human-ch$CHARGE"
 	echo $outDir
 	    if [[ ! -d $outDir ]]
 	    then
@@ -56,15 +56,15 @@ c=$2
 		mkdir -p $outDir
 	    fi
 	
-		MS2="/home/ubuntu/SGM/sourceCodes/data/msgfdata/plasm/plasm-$id-ch$c.mgf"
+		MS2="/home/ubuntu/SGM/sourceCodes/data/msgfdata/human/Linfeng-$id-ch$c.mgf"
 		echo $MS2
 	# start with targets
-	    OUTTARGETMZID="$outDir/plasm-ch$CHARGE-targets.mzid"
-	    OUTTARGETTSV="$outDir/plasm-ch$CHARGE-targets.tsv"
+	    OUTTARGETMZID="$outDir/human-ch$CHARGE-targets.mzid"
+	    OUTTARGETTSV="$outDir/human-ch$CHARGE-targets.tsv"
 	    runMsgf $MS2 $TARGETDB $OUTTARGETMZID $CHARGE $OUTTARGETTSV
 	
 	# next decoys
-	    OUTDECOYMZID="$outDir/plasm-ch$CHARGE-decoys.mzid"
-	    OUTDECOYTSV="$outDir/plasm-ch$CHARGE-decoys.tsv"
+	    OUTDECOYMZID="$outDir/human-ch$CHARGE-decoys.mzid"
+	    OUTDECOYTSV="$outDir/human-ch$CHARGE-decoys.tsv"
 	    runMsgf $MS2 $DECOYDB $OUTDECOYMZID $CHARGE $OUTDECOYTSV
 	
