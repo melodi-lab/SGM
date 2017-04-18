@@ -41,8 +41,8 @@ MSGFPlusDir=$PWD
 MSGFPlus="java -Xmx3500M -jar $MSGFPlusDir/MSGFPlus.jar"
 MzIDToTSV="java -cp $MSGFPlusDir/MSGFPlus.jar edu.ucsd.msjava.ui.MzIDToTsv"
 
-TARGETDB="/data/tcbbData/Plasmodium/tide-index.peptides.target.fasta"
-DECOYDB="/data/tcbbData/Plasmodium/tide-index.peptides.decoy.fasta"
+TARGETDB="../data/tide-index.peptides.target.fasta"
+DECOYDB="../data/tide-index.peptides.decoy.fasta"
 
 	id=$1
 c=$2	
@@ -57,7 +57,7 @@ c=$2
 		mkdir -p $outDir
 	    fi
 	
-		MS2="/data/tcbbData/Plasmodium/plasm-$id-ch$c.mgf"
+		MS2="../data/plasm-$id-ch$c.mgf"
 		echo $MS2
 	# start with targets
 	    OUTTARGETMZID="$outDir/plasm-ch$CHARGE-targets.mzid"
