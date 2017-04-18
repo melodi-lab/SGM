@@ -13,6 +13,14 @@ for id in range(1,21):
         command = "./runPlasm_isotopy.sh %d %d"%(id,charge)
         commands.append(command)
 
+for id in range(1,101):
+    for charge in [2,3,4,5]:
+        command = "./runHuman.sh %d %d"%(id,charge)
+        commands.append(command)
+
+        command = "./runHuman_isotopy.sh %d %d"%(id,charge)
+        commands.append(command)        
+
 
 def runCommand(command):
     subprocess.call(command, shell=True)
@@ -31,6 +39,15 @@ postPressing(Dir, Org)
 Dir = "/home/ubuntu/SGM/sourceCodes/MSGFPlus/plasm-with-isotopy/"
 Org = "plasm"
 postPressing(Dir, Org)
+
+Dir = "/home/ubuntu/SGM/sourceCodes/MSGFPlus/human-no-isotopy/"
+Org = "human"
+postPressing(Dir, Org)
+
+Dir = "/home/ubuntu/SGM/sourceCodes/MSGFPlus/human-with-isotopy/"
+Org = "human"
+postPressing(Dir, Org)
+
 
 
 

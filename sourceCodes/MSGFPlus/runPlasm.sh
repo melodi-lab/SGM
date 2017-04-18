@@ -40,8 +40,8 @@ MSGFPlusDir=$PWD
 MSGFPlus="java -Xmx3500M -jar $MSGFPlusDir/MSGFPlus.jar"
 MzIDToTSV="java -cp $MSGFPlusDir/MSGFPlus.jar edu.ucsd.msjava.ui.MzIDToTsv"
 
-TARGETDB="../data/tide-index.peptides.target.fasta"
-DECOYDB="../data/tide-index.peptides.decoy.fasta"
+TARGETDB="database/PlasmoDB-10.0_Pfalciparum3D7_AnnotatedProteins-nokeil-target.fasta"
+DECOYDB="database/PlasmoDB-10.0_Pfalciparum3D7_AnnotatedProteins-nokeil-decoy.fasta"
 
 	id=$1
 c=$2	
