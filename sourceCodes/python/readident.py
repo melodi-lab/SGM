@@ -102,6 +102,10 @@ print("/////////////////////////////////////////////////////////////////////////
 
 print("//////////////////////////////////////////////////////////////////////////////////////////")	
 
+file_name="temp/malaria-2.txt"
+read_indent(file_name)
+exit()
+
 file_name = "output/postbcb/plasm-1-ch3-lambda1-7-lambda2-15.txt"
 
 read_indent(file_name)
@@ -173,6 +177,7 @@ for charge in [2,3,4]:
 
 #file_name="/n/trombone/s1/wrbai/codes/output/test_scores_output_fast_Linfeng_080510_HapMap9_1_ch%s_test.txt.sumScoreIdent"%(2345)
 #read_indent(file_name)
+
 
 file_name="/n/trombone/s1/wrbai/codes/run_crux/Linfeng_9_1-tide-Pvalue/Linfeng_tide_pvalue.txt"
 
@@ -286,6 +291,9 @@ read_indent(file_name)
 #
 #read_indent(file_name)
 #
+file_name="result.txt"
+read_indent(file_name)
+exit()
 file_name="run_crux/Linfeng010221-output-1-7-tide/Linfeng_tide.txt"
 #
 read_indent(file_name)

@@ -30,8 +30,11 @@ def readindent(f):
     spec2sorted = sorted(spec2, key=lambda x: x[3], reverse=True)
     if len(spec2sorted) == 0:
         return [], 0, 1
+
+    return spec2sorted, 1, 1 
     if len(spec2sorted) <= 10:
         maxs = spec2sorted[0][3]
+        maxs = 1
         return [(i[0], i[1], i[2], i[3] / maxs) for i in spec2sorted], 1, maxs
     n_decoy = 0
     n_all = 0
@@ -47,8 +50,9 @@ def readindent(f):
     score2 = (spec2sorted[n_all][3])
 
     print n_all, score2
-    if score2 < 1e-3:
-        return spec2sorted, 0, score2
+    #if score2 < 1e-3:
+    #    return spec2sorted, 0, score2
+    score2 = 1
 
     return [(i[0], i[1], i[2], i[3] / score2) for i in spec2sorted], 1, score2
 
@@ -98,7 +102,7 @@ def printIdent(spec):
             n_decoy = n_decoy + 1
         if float(n_decoy) / float(n_all) > 0.01:
             break
-    print "q=0.001: %d" % n_all
+    print "q=0.01: %d" % n_all
 
 
 def writeSpec(spec, outputfile):
@@ -297,10 +301,10 @@ Spec = []
 for i in range(20):
     id = i + 1
     filenames = []
-    dir = "../data/result"
+    dir = "../MSGFPlus"
     for j in range(4):
         c = j + 2
-        filenames.append("%s/%d-ch%d.txt" % (dir, id, c))
+        filenames.append("%s/plasm-%d/plasm-ch%d/plasm.txt" % (dir, id, c))
     spec = merge_within(filenames)
     Spec.append(spec)
 S = merge_out(Spec)
