@@ -45,9 +45,7 @@ TARGETDB="/data/tcbbData/Plasmodium/tide-index.peptides.target.fasta"
 DECOYDB="/data/tcbbData/Plasmodium/tide-index.peptides.decoy.fasta"
 
 	id=$1
-	for(( c=2; c<=5; c++))
-	do
-	
+c=$2	
 	    CHARGE=$c
 	    outDir="plasm-$id/plasm-ch$CHARGE"
 	echo $outDir
@@ -71,4 +69,3 @@ DECOYDB="/data/tcbbData/Plasmodium/tide-index.peptides.decoy.fasta"
 	    OUTDECOYTSV="$outDir/plasm-ch$CHARGE-decoys.tsv"
 	    runMsgf $MS2 $DECOYDB $OUTDECOYMZID $CHARGE $OUTDECOYTSV
 	
-	done
