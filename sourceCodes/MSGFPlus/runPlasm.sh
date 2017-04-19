@@ -48,6 +48,12 @@ c=$2
 	    CHARGE=$c
 	    outDir="plasm-no-isotopy/plasm-$id/plasm-ch$CHARGE"
 	echo $outDir
+
+		MS2="/home/ubuntu/SGM/sourceCodes/data/msgfdata/plasm/plasm-$id-ch$c.mgf"
+		echo $MS2
+if [ ! -f $MS2 ]; then
+	exit
+fi
 	    if [[ ! -d $outDir ]]
 	    then
 		mkdir -p $outDir
@@ -56,8 +62,6 @@ c=$2
 		mkdir -p $outDir
 	    fi
 	
-		MS2="/home/ubuntu/SGM/sourceCodes/data/msgfdata/plasm/plasm-$id-ch$c.mgf"
-		echo $MS2
 	# start with targets
 	    OUTTARGETMZID="$outDir/plasm-ch$CHARGE-targets.mzid"
 	    OUTTARGETTSV="$outDir/plasm-ch$CHARGE-targets.tsv"

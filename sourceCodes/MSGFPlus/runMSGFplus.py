@@ -6,7 +6,7 @@ from multiprocessing import cpu_count
 
 commands = []
 for id in range(1,21):
-    for charge in [2,3,4,5]:
+    for charge in [1,2,3,4,5]:
         command = "./runPlasm.sh %d %d"%(id,charge)
         commands.append(command)
 
@@ -14,7 +14,7 @@ for id in range(1,21):
         commands.append(command)
 
 for id in range(1,101):
-    for charge in [2,3,4,5]:
+    for charge in [1,2,3,4,5]:
         command = "./runHuman.sh %d %d"%(id,charge)
         commands.append(command)
 
@@ -25,8 +25,10 @@ for id in range(1,101):
 def runCommand(command):
     subprocess.call(command, shell=True)
 
-#pool = Pool()  
-#pool.map(runCommand, commands)    
+pool = Pool()  
+
+for i, _ in enumerate(pool.imap_unordered(runCommand, commands), 1):
+    sys.stderr.write('\rdone {0:%}'.format(i/len(commands)))
 def postPressing(Dir, Org):
     subprocess.call("python bin/convert_into_ident.py %s %s > log.txt"%(Dir, Org), shell=True)
     subprocess.call("python bin/merge.py %s %s > log.txt"%(Dir, Org), shell=True)

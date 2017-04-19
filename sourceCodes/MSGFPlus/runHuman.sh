@@ -25,7 +25,6 @@ function runMsgf {
 	-minLength 7 \
 	-mod mods.txt \
 	-thread 1 \
-	-ntt 2 \
 	-ignoreMetCleavage 1 
 	#> $3.log.txt
 	#-mod msgf-mods.txt \
@@ -48,6 +47,10 @@ c=$2
 	    CHARGE=$c
 	    outDir="human-no-isotopy/human-$id/human-ch$CHARGE"
 	echo $outDir
+		MS2="/home/ubuntu/SGM/sourceCodes/data/msgfdata/human/Linfeng-$id-ch$c.mgf"
+	    	if [ ! -f $MS2 ]; then     
+			exit
+		fi
 	    if [[ ! -d $outDir ]]
 	    then
 		mkdir -p $outDir
@@ -56,7 +59,6 @@ c=$2
 		mkdir -p $outDir
 	    fi
 	
-		MS2="/home/ubuntu/SGM/sourceCodes/data/msgfdata/human/Linfeng-$id-ch$c.mgf"
 		echo $MS2
 	# start with targets
 	    OUTTARGETMZID="$outDir/human-ch$CHARGE-targets.mzid"
