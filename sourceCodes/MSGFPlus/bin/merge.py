@@ -7,7 +7,7 @@ from os.path import isfile, join
 
 
 def readindent(f):
-    print "-------%s"%f
+    #print "-------%s"%f
     input_file = csv.DictReader(open(f), delimiter='\t')
     spec2 = []
     for row in input_file:
@@ -36,7 +36,7 @@ def readindent(f):
     
     score2 = (spec2sorted[n_all][3])
 
-    print n_all, score2
+    #print n_all, score2
     #if score2 < 1e-3:
     #    return spec2sorted, 0, score2
     score2 = 1

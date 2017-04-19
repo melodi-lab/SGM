@@ -32,6 +32,7 @@ function runMsgf {
 
     $MzIDToTSV -i $3 \
         -o $5 
+rm -f $3
 }
 
 MSGFPlusDir=$PWD
