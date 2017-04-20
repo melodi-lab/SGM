@@ -26,9 +26,9 @@ def runCommand(command):
     subprocess.call(command, shell=True)
 
 pool = Pool()  
-
-for i, _ in enumerate(pool.imap_unordered(runCommand, commands), 1):
-    sys.stderr.write('\rdone {0:%}'.format(i/len(commands)))
+pool.map(runCommand, commands)
+#for i, _ in enumerate(pool.imap_unordered(runCommand, commands), 1):
+#    sys.stderr.write('\rdone {0:%}'.format(i/len(commands)))
 def postPressing(Dir, Org):
     subprocess.call("python bin/convert_into_ident.py %s %s > log.txt"%(Dir, Org), shell=True)
     subprocess.call("python bin/merge.py %s %s > log.txt"%(Dir, Org), shell=True)
