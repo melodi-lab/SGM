@@ -20,7 +20,7 @@ function runMsgf {
 	-maxCharge $4 \
 	-m 1 \
 	-inst 1 \
-	-e 1 \
+	-e 9 \
 	-minLength 7 \
 	-mod tmtModFile.txt \
 	-thread 1 \
