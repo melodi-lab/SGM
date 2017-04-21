@@ -5,12 +5,11 @@
 MSGFPlusDir=$PWD
 
 
-MSGFPlus="java -Xmx3500M -jar $MSGFPlusDir/MSGFPlus.jar"
 MzIDToTSV="java -cp $MSGFPlusDir/MSGFPlus.jar edu.ucsd.msjava.ui.MzIDToTsv"
 
-OUTTARGETMZID="$outDir/human-ch$CHARGE-targets.mzid"
-OUTTARGETTSV="$outDir/human-ch$CHARGE-targets.tsv"
+OUTTARGETMZID="test/F004917.mzid"
+OUTTARGETTSV="test/F004917.tsv"
 
 
-$MzIDToTSV -i OUTTARGETMZID -o OUTTARGETTSV
+$MzIDToTSV -i $OUTTARGETMZID -o $OUTTARGETTSV
 	
