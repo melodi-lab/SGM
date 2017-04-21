@@ -102,8 +102,10 @@ def read_file(FILENAME):
     print "----------------------------"
 
     return target_sid.values(), kind, parseMGFfilename(targetMgfFilename)
-
-allfile = ["test/1/F005245.csv","test/1/F005246.csv"]
+allfilefolder = "test/1/"
+allfile= []
+for file in os.listdir(allfilefolder):
+    allfile.append(allfilefolder + file)
 
 TARGET = {}
 DECOY = {}
@@ -116,6 +118,7 @@ for filename in allfile:
 
 for name in TARGET:
     assert name in DECOY
+
     target = TARGET[name]
     decoy = DECOY[name]
 
@@ -147,4 +150,8 @@ for name in TARGET:
     output.write('Kind\tSid\tPeptide\tScore\n')
     for row1 in t_and_d:
         output.write("%s\t%d\t%s\t%.15f\n" % (row1[0], row1[1], row1[2], row1[3]))  
+    print "================="
+    print "processing target and decoy"
+    print "ORG: %s, id: %d-%d, charge: %d"%( name[0], name[2]/100, name[2]%100, name[1])    
+    print "Writing:", outputname
 #print [t["pep_seq"]for t in target]
