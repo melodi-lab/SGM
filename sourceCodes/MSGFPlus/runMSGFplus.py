@@ -25,14 +25,14 @@ for id in range(1,101):
 def runCommand(command):
     subprocess.call(command, shell=True)
 
-pool = Pool()  
-pool.map(runCommand, commands)
+#pool = Pool()  
+#pool.map(runCommand, commands)
 #for i, _ in enumerate(pool.imap_unordered(runCommand, commands), 1):
 #    sys.stderr.write('\rdone {0:%}'.format(i/len(commands)))
 def postPressing(Dir, Org):
-    subprocess.call("python bin/convert_into_ident.py %s %s > log.txt"%(Dir, Org), shell=True)
-    subprocess.call("python bin/merge.py %s %s > log.txt"%(Dir, Org), shell=True)
-    subprocess.call("python bin/readident.py %s %s > log.txt"%(Dir, Org), shell=True)
+ #   subprocess.call("python bin/convert_into_ident.py %s %s > log.txt"%(Dir, Org), shell=True)
+  #  subprocess.call("python bin/merge.py %s %s > log.txt"%(Dir, Org), shell=True)
+    subprocess.call("python bin/readident.py %s %s"%(Dir, Org), shell=True)
 
 Dir = "/home/ubuntu/SGM/sourceCodes/MSGFPlus/plasm-no-isotopy/"
 Org = "plasm"
