@@ -5,11 +5,11 @@ status = 0
 peakDataPathName = "Peak list data path"
 proteinHitName = "Protein hits"
 
-csvEntryId = {}
 target = []
 for line in targetRead.readlines():
     if status == 0:
         if line[:len(peakDataPathName)] == peakDataPathName:
+
             splitLine = line.split('"')
             splitLine = splitLine[1].split('\\')
             targetMgfFilename = splitLine[-1]
@@ -20,15 +20,21 @@ for line in targetRead.readlines():
     elif status == 2:
         status += 1
     elif status == 3:
+    	line = line.strip()    	
         csvEntry = line.split(',')
-        id = 0
-        for i in csvEntry:
-            csvEntryId[i] = id
-            id += 1
         status += 1
     elif status == 4:
+    	line = line.strip()
         entry = line.split(',')
+        t = {}
+        for key, e in zip(csvEntry, entry):
+        	t[key] = e
 
-        target.append((entry[csvEntryId['prot_hit_num']]))
-print target    
-#print csvEntryId.keys()
+        t['pep_score'] = float(t['pep_score'])
+        t['sid'] = t['pep_scan_title'].split('.')[-1][:-1]
+        target.append(t)
+
+
+print [(t["sid"], t["pep_scan_title"]) for t in target  ]      
+#print target   
+print csvEntry
