@@ -1,0 +1,56 @@
+
+"Header","--------------------------------------------------------"
+
+Search title,"Submitted from dcoy of plasm1 by Mascot Daemon on EC2AMAZ-EF37HC9"
+Timestamp,"2017-04-20T09:16:57Z"
+User,""
+Email,""
+Report URI,"http://proteomicsresource.washington.edu/mascot/cgi/master_results.pl?file=../data/20170420/F005243.dat"
+Peak list data path,"D:\plasm\plasm-4-ch2.mgf"
+Peak list format,"Mascot generic"
+Search type,MIS
+Mascot version,"2.3.01"
+Database,"SwissProt"
+Fasta file,"SwissProt_2014_09.fasta"
+Total sequences,546439
+Total residues,194445396
+Sequences after taxonomy filter,546439
+Number of queries,304
+
+"Variable modifications","--------------------------------------------------------"
+
+"Identifier","Name","Delta","Neutral loss(es)"
+1,"Oxidation (M)",15.994915,0,63.998285
+
+"Search Parameters","--------------------------------------------------------"
+
+Taxonomy filter,"All entries"
+Enzyme,"Trypsin"
+Maximum Missed Cleavages,1
+Fixed modifications,""
+Variable modifications,"Oxidation (M)"
+Peptide Mass Tolerance,0.8
+Peptide Mass Tolerance Units,Da
+Fragment Mass Tolerance,0.8
+Fragment Mass Tolerance Units,Da
+Mass values,Monoisotopic
+Instrument type,"Default"
+
+"Format parameters","--------------------------------------------------------"
+
+Significance threshold,0.05
+Max. number of hits,0
+Use MudPIT protein scoring,1
+Ions score cut-off,0
+Include same-set proteins,0
+Include sub-set proteins,0
+Include unassigned,0
+Require bold red,0
+
+"Protein hits","--------------------------------------------------------"
+
+prot_hit_num,prot_acc,prot_desc,prot_score,prot_mass,prot_matches,prot_matches_sig,prot_sequences,prot_sequences_sig,pep_query,pep_rank,pep_isbold,pep_isunique,pep_exp_mz,pep_exp_mr,pep_exp_z,pep_calc_mr,pep_delta,pep_miss,pep_score,pep_expect,pep_res_before,pep_seq,pep_res_after,pep_var_mod,pep_var_mod_pos,pep_scan_title
+1,"G3P2_YEAST","Glyceraldehyde-3-phosphate dehydrogenase 2 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TDH2 PE=1 SV=3",34,35824,1,0,1,0,156,1,1,1,560.7500,1119.4854,2,1119.4833,0.0022,0,34.16,0.4,R,YAGEVSHDDK,H,"",,"plasm-4.sid513.513"
+2,"GLNE_PSEPK","Glutamate-ammonia-ligase adenylyltransferase OS=Pseudomonas putida (strain KT2440) GN=glnE PE=3 SV=1",34,109365,1,0,1,0,255,1,1,1,802.5100,1603.0054,2,1602.7308,0.2747,0,33.53,0.47,R,QTQMLPEGETDQAR,V,"",,"plasm-4.sid4577.4577"
+3,"MAGI2_MOUSE","Membrane-associated guanylate kinase, WW and PDZ domain-containing protein 2 OS=Mus musculus GN=Magi2 PE=1 SV=2",30,140831,1,0,1,0,122,1,1,1,519.1400,1036.2654,2,1036.5778,-0.3123,1,30.42,1.7,K,ELDVHLRR,M,"",,"plasm-4.sid1660.1660"
+4,"PLSY_SHEPC","Glycerol-3-phosphate acyltransferase OS=Shewanella putrefaciens (strain CN-32 / ATCC BAA-453) GN=plsY PE=3 SV=1",16,21717,1,0,1,0,1,1,1,1,306.1700,610.3254,2,610.3551,-0.0296,1,15.85,18,K,RPKNP,-,"",,"plasm-4.sid5266.5266"
