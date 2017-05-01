@@ -102,7 +102,7 @@ def read_file(FILENAME):
     print "----------------------------"
 
     return target_sid.values(), kind, parseMGFfilename(targetMgfFilename)
-allfilefolder = "test/1/"
+allfilefolder = "plasm-tsv/"
 allfile= []
 for file in os.listdir(allfilefolder):
     allfile.append(allfilefolder + file)
@@ -117,9 +117,14 @@ for filename in allfile:
         DECOY[name] = target
 
 for name in TARGET:
-    assert name in DECOY
+    #print name
 
     target = TARGET[name]
+    if not name in DECOY:
+    
+        print target[0]['mgf']
+        print "======================================================================================================================="
+        continue
     decoy = DECOY[name]
 
     t_and_d = {}
@@ -139,7 +144,7 @@ for name in TARGET:
             t_and_d[t["sid"]] = t    
     t_and_d = [(t["kind"], t["sid"], t["pep_seq"], t["pep_score"]) for t in t_and_d.values()]    
     t_and_d = sorted(t_and_d, key = lambda x : -x[3])    
-    outputname = "%s/%s-%d/%s-%d-ch%d/%s.txt"%(name[0],name[0],name[2],name[0],name[2],name[1],name[0]) 
+    outputname = "%s/%s-%d/%s-ch%d/%s.txt"%(name[0],name[0],name[2],name[0],name[1],name[0]) 
     if not os.path.exists(os.path.dirname(outputname)):
         try:
             os.makedirs(os.path.dirname(outputname))
