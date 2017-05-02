@@ -70,9 +70,10 @@ def read_indent(FILE_NAME):
 #	print "q:\t",
 #	for q in q_range:
 #		print"%f\t"%(q),
-	print "\nn:\t",
-	for n in n_range:
-		print"%f\t"%(n),
+	print "\nn:\n",
+        print ','.join([str(n) for n in n_range])
+	#for n in n_range:
+#		print"%f\t"%(n),
 #	print "\nscore:\t",
 #	for s in score_range:
 #		print"%f\t"%(s),
