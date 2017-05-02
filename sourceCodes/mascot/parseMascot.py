@@ -102,8 +102,8 @@ def read_file(FILENAME):
     print "----------------------------"
 
     return target_sid.values(), kind, parseMGFfilename(targetMgfFilename)
-allfilefolder = "plasm52ch2/"
-Outfolder = "plasm5-2-ch2"
+allfilefolder = "/home/ubuntu/wenruo_aws/result_backup/5_2_2017_plasm_mascot/"
+Outfolder = "plasm5_2"
 allfile= []
 for file in os.listdir(allfilefolder):
     allfile.append(allfilefolder + file)
