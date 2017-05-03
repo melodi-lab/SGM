@@ -64,7 +64,8 @@ for file in os.listdir(datfolder):
     f = file.strip('.dat')
     allfile.append(f)
 import shutil
-shutil.rmtree(csvfolder)
+if os.path.exists(os.path.dirname(csvfolder)):   
+    shutil.rmtree(csvfolder)
 if not os.path.exists(os.path.dirname(csvfolder)):   
     os.makedirs(os.path.dirname(csvfolder))
     commands = []
