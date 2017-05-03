@@ -56,8 +56,7 @@ def read_file_dat(FILENAME):
     line_mgf = "FILE="
     status = 0
     status2 = 0
-    for line in targetRead.readlines():
-        
+    for line in targetRead.readlines():        
         if "fasta" in line:
             if "target" in line:
                 kind = 't'
@@ -78,9 +77,23 @@ def read_file_dat(FILENAME):
 
 
 def read_file_csv(FILENAME, kind):  
-    targetRead = open(FILENAM)
+    targetRead = open(FILENAME)
+    target_sid = {}
     for line in targetRead.readlines():
-        return
+        splitLine = line.split(';')
+        t = {}
+        t['sid'] = int(splitLine[2].split('.')[-1][:-1])
+        t['pep_seq'] = splitLine[4]
+        t['pep_score'] = float(splitLine[-3])
+        t['kind'] = kind
+        if t["sid"] in target_sid:
+            if t['pep_score'] > target_sid[t["sid"]]['pep_score']:
+                target_sid[t["sid"]] = t
+        else:
+            target_sid[t["sid"]] = t
+    return target_sid.values()        
+
+
 
 
     
@@ -92,7 +105,8 @@ for file in os.listdir(datfolder):
     f = file.strip('.dat')
     allfile.append(f)
 
-if not os.path.exists(os.path.dirname(csvfolder)):   
+if not os.path.exists(os.path.dirname(csvfolder)):  
+
     os.makedirs(os.path.dirname(csvfolder))
     commands = []
     for f in allfile:
@@ -112,13 +126,13 @@ Names = set([])
 for filename in allfile:
     kind, name = read_file_dat(datfolder+filename+'.dat')
     print kind, name
-    #target = read_file_csv(csvfolder+filename+'.csv', kind)
-    #if kind == 't':
-    #    TARGET[name] = target
-    #elif kind == 'd':
-    #    DECOY[name] = target
-    #Names.add(name)
-exit()
+    target = read_file_csv(csvfolder+filename+'.csv', kind)
+    if kind == 't':
+        TARGET[name] = target
+    elif kind == 'd':
+        DECOY[name] = target
+    Names.add(name)
+
 for name in Names:
     # print name
     if name in TARGET:
