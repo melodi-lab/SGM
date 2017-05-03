@@ -50,10 +50,37 @@ def read_file(FILENAME):
     return target_sid.values(), kind, parseMGFfilename(targetMgfFilename)                
 
 def read_file_dat(FILENAME):
-    return
+    kind = ''
+    targetRead = open(FILENAME)
+    line_faste = "COM=Submitted from"
+    line_mgf = "FILE="
+    status = 0
+    status2 = 0
+    for line in targetRead.readlines():
+        
+        if "fasta" in line:
+            if "target" in line:
+                kind = 't'
+            elif "decoy" in line:
+                kind = 'd'
+            status += 1
+        
+        if line[:len(line_mgf)] == line_mgf:
+            line = line.strip('\n')
+            splitLine = line.split('\\')
+            targetMgfFilename = splitLine[-1]
+            status2 += 1
+        if min(status, status2) > 0:
+            break    
+    return kind, parseMGFfilename(targetMgfFilename)            
 
-def read_file_csv(FILENAME):  
-    return  
+
+
+
+def read_file_csv(FILENAME, kind):  
+    targetRead = open(FILENAM)
+    for line in targetRead.readlines():
+        return
 
 
     
@@ -64,9 +91,7 @@ allfile= []
 for file in os.listdir(datfolder):
     f = file.strip('.dat')
     allfile.append(f)
-import shutil
-if os.path.exists(os.path.dirname(csvfolder)):   
-    shutil.rmtree(csvfolder)
+
 if not os.path.exists(os.path.dirname(csvfolder)):   
     os.makedirs(os.path.dirname(csvfolder))
     commands = []
@@ -79,19 +104,21 @@ if not os.path.exists(os.path.dirname(csvfolder)):
 
 
 
-exit()    
+
 
 TARGET = {}
 DECOY = {}
 Names = set([])
 for filename in allfile:
-    target, kind, name = read_file(filename)
-    if kind == 't':
-        TARGET[name] = target
-    elif kind == 'd':
-        DECOY[name] = target
-    Names.add(name)
-
+    kind, name = read_file_dat(datfolder+filename+'.dat')
+    print kind, name
+    #target = read_file_csv(csvfolder+filename+'.csv', kind)
+    #if kind == 't':
+    #    TARGET[name] = target
+    #elif kind == 'd':
+    #    DECOY[name] = target
+    #Names.add(name)
+exit()
 for name in Names:
     # print name
     if name in TARGET:
