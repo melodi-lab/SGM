@@ -102,30 +102,39 @@ def read_file(FILENAME):
     print "----------------------------"
 
     return target_sid.values(), kind, parseMGFfilename(targetMgfFilename)
-allfilefolder = "plasm-tsv/"
+allfilefolder = "/home/ubuntu/wenruo_aws/result_backup/5_2_2017_plasm_mascot/"
+Outfolder = "plasm5_2"
 allfile= []
 for file in os.listdir(allfilefolder):
     allfile.append(allfilefolder + file)
 
 TARGET = {}
 DECOY = {}
+Names = set([])
 for filename in allfile:
     target, kind, name = read_file(filename)
     if kind == 't':
         TARGET[name] = target
     elif kind == 'd':
         DECOY[name] = target
+    Names.add(name)
 
-for name in TARGET:
+for name in Names:
     #print name
-
-    target = TARGET[name]
-    if not name in DECOY:
+    if name in TARGET:
+        target = TARGET[name]
+    else:
+        target = []
+    if name in DECOY:
+        decoy = DECOY[name]
+    else:
+        decoy = []
+    #if not name in DECOY:
     
-        print target[0]['mgf']
-        print "======================================================================================================================="
-        continue
-    decoy = DECOY[name]
+    #    print target[0]['mgf']
+    #    print "======================================================================================================================="
+    #    continue
+    #decoy = DECOY[name]
 
     t_and_d = {}
 
@@ -144,7 +153,7 @@ for name in TARGET:
             t_and_d[t["sid"]] = t    
     t_and_d = [(t["kind"], t["sid"], t["pep_seq"], t["pep_score"]) for t in t_and_d.values()]    
     t_and_d = sorted(t_and_d, key = lambda x : -x[3])    
-    outputname = "%s/%s-%d/%s-ch%d/%s.txt"%(name[0],name[0],name[2],name[0],name[1],name[0]) 
+    outputname = "%s/%s-%d/%s-ch%d/%s.txt"%(Outfolder,name[0],name[2],name[0],name[1],name[0]) 
     if not os.path.exists(os.path.dirname(outputname)):
         try:
             os.makedirs(os.path.dirname(outputname))
