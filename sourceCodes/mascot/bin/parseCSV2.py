@@ -56,6 +56,8 @@ def read_file_dat(FILENAME):
     line_mgf = "FILE="
     status = 0
     status2 = 0
+    target_sid = {}
+  
     for line in targetRead.readlines():        
         if "fasta" in line:
             if "target" in line:
@@ -69,14 +71,35 @@ def read_file_dat(FILENAME):
             splitLine = line.split('\\')
             targetMgfFilename = splitLine[-1]
             status2 += 1
-        if min(status, status2) > 0:
-            break    
-    return kind, parseMGFfilename(targetMgfFilename)            
+        if '_' in line:
+            cc = line.index('_')
+            if line[0] == 'q' and line[1:cc].isdigit():
+                
+                ss = line.split(",")
+                if len(ss) <= 8:
+                    continue
+                if 'term' in line:
+                    continue
+                t = {}
+                t['sid'] = int(line[1:cc])
+                #print t['sid']
+                t['pep_seq'] = ss[4]
+                t['pep_score'] = float(ss[7])
+                t['kind'] = kind
+                if t["sid"] in target_sid:
+                    if t['pep_score'] > target_sid[t["sid"]]['pep_score']:
+                        target_sid[t["sid"]] = t
+                else:
+                    target_sid[t["sid"]] = t
+   
+    return kind, parseMGFfilename(targetMgfFilename)  , target_sid.values()          
 
 
 def file_len(fname):
 
     return sum(1 for line in open(fname))
+
+  
 
 def read_file_csv(FILENAME, kind):  
     if file_len(FILENAME) <= 1:
@@ -106,6 +129,11 @@ def read_file_csv(FILENAME, kind):
 datfolder = "../result/5-24-2017-dat/2/"
 csvfolder = "../result/5-24-2017-dat/2/csv/"
 Outfolder = "../result/5-24-2017-dat-human/"
+
+datfolder = "../result/6-12-2017-dat/1/"
+csvfolder = "../result/6-12-2017-dat/1/csv/"
+Outfolder = "../result/6-12-2017-dat-yeast/"
+
 allfile= []
 for file in os.listdir(datfolder):
     if file[-4:] == '.dat':
@@ -129,10 +157,11 @@ TARGET = {}
 DECOY = {}
 Names = set()
 for filename in sorted(allfile):
-    kind, name = read_file_dat(datfolder+filename+'.dat')
+    kind, name, target = read_file_dat(datfolder+filename+'.dat')
     print kind, name
     print csvfolder+filename+'.csv'
-    target = read_file_csv(csvfolder+filename+'.csv', kind)
+    
+    #target = read_file_csv(csvfolder+filename+'.csv', kind)
     print kind
     if kind == 't':
         TARGET[name] = target
