@@ -203,4 +203,4 @@ for f in filenames:
 
     a = np.array(read_indent(f))
     results = results + a
-print results    
+print ','.join([str(i) for i in results])    

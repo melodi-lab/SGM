@@ -12,7 +12,7 @@ def remove_td(s):
 inputfolder = "../result/5-24-2017-dat/"
 
 searches = {}
-folder_id = 1
+folder_id = 100
 cc = 0
 for fn in sorted(os.listdir(inputfolder)):
     sys.stderr.write("%d"%cc)
@@ -24,12 +24,16 @@ for fn in sorted(os.listdir(inputfolder)):
         count = 0
         for line in open(inputfolder+fn):
             count += 1
+
             if count > 100:
                 break
 
             if line[:3] == "DB=":
                 #database = (line[3:]).strip("\n")
-            #if line[:4] == "COM=":
+            
+                if "human" in line:
+                    break
+            if line[:4] == "COM=":        
                 if not remove_td(line) in searches:
                     searches[remove_td(line)] = folder_id
                     folder_id += 1

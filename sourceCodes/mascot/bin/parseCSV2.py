@@ -92,7 +92,12 @@ def read_file_dat(FILENAME):
                 else:
                     target_sid[t["sid"]] = t
    
-    return kind, parseMGFfilename(targetMgfFilename)  , target_sid.values()          
+    if 'merge'  not in targetMgfFilename:
+
+        return kind, parseMGFfilename(targetMgfFilename),target_sid.values(), 0            
+    return kind, [], [],1 
+
+            
 
 
 def file_len(fname):
@@ -126,13 +131,20 @@ def read_file_csv(FILENAME, kind):
 
 
     
-datfolder = "../result/5-24-2017-dat/2/"
-csvfolder = "../result/5-24-2017-dat/2/csv/"
-Outfolder = "../result/5-24-2017-dat-human/"
+
 
 datfolder = "../result/6-12-2017-dat/1/"
 csvfolder = "../result/6-12-2017-dat/1/csv/"
 Outfolder = "../result/6-12-2017-dat-yeast/"
+
+datfolder = "../result/5-24-2017-dat/2/"
+csvfolder = "../result/5-24-2017-dat/2/csv/"
+Outfolder = "../result/5-24-2017-dat-human/"
+
+datfolder = "../result/5-24-2017-dat/106/"
+csvfolder = "../result/5-24-2017-dat/106/csv/"
+Outfolder = "../result/5-24-2017-dat-plams4/"
+
 
 allfile= []
 for file in os.listdir(datfolder):
@@ -141,7 +153,7 @@ for file in os.listdir(datfolder):
         f = file.strip('.dat')
         allfile.append(f)
 
-if not os.path.exists(os.path.dirname(csvfolder)):  
+if False:  
 
     os.makedirs(os.path.dirname(csvfolder))
     commands = []
@@ -157,10 +169,11 @@ TARGET = {}
 DECOY = {}
 Names = set()
 for filename in sorted(allfile):
-    kind, name, target = read_file_dat(datfolder+filename+'.dat')
+    kind, name, target, merged = read_file_dat(datfolder+filename+'.dat')
     print kind, name
     print csvfolder+filename+'.csv'
-    
+    if merged:
+        continue
     #target = read_file_csv(csvfolder+filename+'.csv', kind)
     print kind
     if kind == 't':
@@ -168,7 +181,7 @@ for filename in sorted(allfile):
     elif kind == 'd':
         DECOY[name] = target
     Names.add(name)
-print DECOY
+#print DECOY
 for name in Names:
     # print name
     target = []
@@ -182,7 +195,7 @@ for name in Names:
         decoy = DECOY[name]
     else:
         decoy = []
-    print decoy
+    #print decoy
 
     #print target
     #print decoy
@@ -223,8 +236,8 @@ for name in Names:
     output.write('Kind\tSid\tPeptide\tScore\n')
     for row1 in t_and_d:
         output.write("%s\t%d\t%s\t%.15f\n" % (row1[0], row1[1], row1[2], row1[3]))  
-    print "================="
-    print "processing target and decoy"
-    print "ORG: %s, id: %d-%d, charge: %d"%( name[0], name[2]/100, name[2]%100, name[1])    
-    print "Writing:", outputname
+    #print "================="
+    #print "processing target and decoy"
+    #print "ORG: %s, id: %d-%d, charge: %d"%( name[0], name[2]/100, name[2]%100, name[1])    
+    #print "Writing:", outputname
 # print [t["pep_seq"]for t in target]
